@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COGA Bookmarklet - Stress Detection Widget</title>
+    <link rel="stylesheet" href="/styles/bookmarklet.css">
+</head>
+<body>
+    <div class="container">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23fef3c7' width='100' height='100' rx='15'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle'%3E🧘%3C/text%3E%3C/svg%3E" alt="COGA" class="emoji">
+        
+        <h1>COGA Stress Widget</h1>
+        
+        <p class="description">
+            Monitor your stress levels in real-time, on any website, with a simple, privacy-focused bookmarklet.
+        </p>
+
+        <div class="bookmarklet-container">
+            <h2 class="bookmarklet-title">Install Your Bookmarklet</h2>
+            <p class="bookmarklet-description">
+                Drag the button below to your browser's bookmarks bar. That's it! Click it on any webpage to load the widget.
+            </p>
+            
+            <a href="javascript:(function(){if(window.COGA){alert('✅ COGA is already loaded on this page!');return;}const s=document.createElement('script');s.src='{{PUBLIC_URL}}/coga.min.js';s.onload=()=>console.log('[COGA] Successfully loaded');s.onerror=()=>alert('❌ Error loading COGA. Check if server is running.');document.head.appendChild(s);})();" 
+               class="bookmarklet-link"
+               onclick="alert('💡 Tip: Drag this button to your bookmarks bar instead of clicking it here!'); return false;">
+                🧘 Load COGA
+            </a>
+            
+            <div style="margin-top: 20px;">
+                <span class="status" id="status">Server Status: <strong>Online</strong></span>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon">🌐</div>
+                <h3 class="info-card-title">Works Everywhere</h3>
+                <p class="info-card-description">Use the COGA widget on any website, from social media to your email inbox.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔒</div>
+                <h3 class="info-card-title">Privacy First</h3>
+                <p class="info-card-description">Your data never leaves your computer. All processing happens locally in your browser.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">⚡</div>
+                <h3 class="info-card-title">Real-time Analysis</h3>
+                <p class="info-card-description">Get instant feedback on your stress levels without delay or server processing.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>COGA v0.1.0 - Phase 1</p>
+        </div>
+    </div>
+
+    <script>
+        // Check if script is accessible
+        const publicUrl = '{{PUBLIC_URL}}';
+        fetch(`${publicUrl}/coga.min.js`, { method: 'HEAD' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Script not found');
+                }
+            })
+            .catch(error => {
+                const status = document.getElementById('status');
+                status.className = 'status error';
+                status.innerHTML = 'Server Status: <strong>Error</strong>';
+            });
+    </script>
+</body>
+</html>
+

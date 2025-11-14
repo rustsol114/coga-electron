@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COGA - Stress Detection & Intervention</title>
+    <link rel="stylesheet" href="/styles/landing.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <div class="navbar-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#68B36B"/>
+                    </svg>
+                    <span class="brand-text">COGA</span>
+                    <span class="brand-accent">Assistant</span>
+                </div>
+            </div>
+            <div class="navbar-menu">
+                <a href="#home" class="nav-link active" data-route="home">Home</a>
+                <a href="#dashboard" class="nav-link" data-route="dashboard">Dashboard</a>
+                <a href="#interventions" class="nav-link" data-route="interventions">Interventions</a>
+                <a href="#widget" class="nav-link" data-route="widget">Widget</a>
+                <a href="#settings" class="nav-link" data-route="settings">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app-content">
+        <div id="home-route" class="route active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-main">For Every</span>
+                        <span class="hero-title-accent">Professional</span>
+                    </h1>
+                    <p class="hero-description">
+                        Transform every screen into a stress-aware, self-regulating environment 
+                        that protects decisions when they matter most.
+                    </p>
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>Browser-based stress monitoring</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>Micro-interventions (10-90 seconds)</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>API integration capabilities</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>Personal stress dashboard</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>Team analytics (Enterprise)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="deployment">
+                <div class="deployment-content">
+                    <div class="section-icon"><i data-lucide="rocket"></i></div>
+                    <h2 class="section-title">Deployment</h2>
+                    <div class="deployment-features">
+                        <div class="deployment-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>One-line script integration</span>
+                        </div>
+                        <div class="deployment-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>No workflow changes</span>
+                        </div>
+                        <div class="deployment-feature">
+                            <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                            <span>Privacy-first architecture</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <h2 class="section-title-large">
+                    <span class="title-main">Simple</span>
+                    <span class="title-accent">3-Step Process</span>
+                </h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-card step-card-detect">
+                            <h3>Detect</h3>
+                            <p>Real-time stress</p>
+                        </div>
+                        <div class="step-details">
+                            <p>Behavioral patterns • Wearable data</p>
+                        </div>
+                        <p class="step-description">
+                            Browser-based guardian that silently watches the signatures 
+                            of stress from your mouse, keyboard, or any wearable.
+                        </p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-card step-card-intervene">
+                            <h3>Intervene</h3>
+                            <p>Micro-interventions (10-60s)</p>
+                        </div>
+                        <div class="step-details">
+                            <p>Breathing • Movement • Cognitive • Audio Visual • Breaks</p>
+                        </div>
+                        <p class="step-description">
+                            Guides a rapid recovery, with a science-proven micro-intervention, 
+                            then disappears.
+                        </p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-card step-card-learn">
+                            <h3>Learn</h3>
+                            <p>AI-powered optimization</p>
+                        </div>
+                        <div class="step-details">
+                            <ul>
+                                <li>Track recovery</li>
+                                <li>Personalize triggers</li>
+                                <li>Adapt interventions</li>
+                            </ul>
+                        </div>
+                        <p class="step-description">
+                            Learns which interventions work best for you - reducing stress in real-time.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="dashboard-route" class="route">
+            <section class="dashboard">
+                <h2 class="section-title">Dashboard</h2>
+                <p class="section-description">Real-time analytics and stress metrics</p>
+                
+                <!-- Calibration Prompt -->
+                <div class="dashboard-calibration-prompt" id="dashboard-calibration-prompt" style="display: none;">
+                    <div class="calibration-card">
+                        <div class="calibration-icon-large">🎯</div>
+                        <h3>First Time Setup</h3>
+                        <p class="calibration-copy">Calibrate your baseline for accurate stress detection. This takes <span data-calibration-duration>3 minutes</span> while you use your computer normally.</p>
+                        <div class="calibration-actions">
+                            <button class="coga-btn coga-btn-primary" id="dashboard-start-calibration">Start Calibration</button>
+                            <button class="calibration-skip-btn" id="dashboard-skip-demo">Skip calibration (10-min demo)</button>
+                        </div>
+                        <p class="calibration-footnote" id="dashboard-quick-demo-note" style="display: none;"></p>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard -->
+                <div class="dashboard-content" id="dashboard-content" style="display: none;">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon"><i data-lucide="activity"></i></div>
+                            <h3>Stress Level</h3>
+                            <div class="dashboard-value" id="dashboard-stress">Normal</div>
+                            <div class="dashboard-score" id="dashboard-stress-score">0.00</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon"><i data-lucide="mouse-pointer-2"></i></div>
+                            <h3>Mouse Activity</h3>
+                            <div class="dashboard-value" id="dashboard-mouse-score">0.00</div>
+                            <div class="dashboard-subtext">Z-score</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon"><i data-lucide="keyboard"></i></div>
+                            <h3>Keyboard Activity</h3>
+                            <div class="dashboard-value" id="dashboard-keyboard-score">0.00</div>
+                            <div class="dashboard-subtext">Z-score</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon"><i data-lucide="heart"></i></div>
+                            <h3>Interventions</h3>
+                            <div class="dashboard-value" id="dashboard-interventions">0</div>
+                            <div class="dashboard-subtext">Today</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-actions">
+                        <button class="dashboard-btn-secondary" id="dashboard-recalibrate">
+                            <i data-lucide="refresh-cw"></i> Recalibrate
+                        </button>
+                    </div>
+
+                    <!-- Baseline Results Section -->
+                    <div class="dashboard-baseline-results" id="dashboard-baseline-results" style="display: none;">
+                        <div class="baseline-header">
+                            <span class="baseline-label-small">Baseline Metrics</span>
+                            <span class="baseline-info">Fixed values from calibration</span>
+                        </div>
+                        <div class="baseline-compact-grid">
+                            <div class="baseline-compact-item">
+                                <span class="baseline-compact-label">Mouse Velocity</span>
+                                <span class="baseline-compact-value" id="baseline-mouse-velocity">0.00</span>
+                                <span class="baseline-compact-mad" id="baseline-mouse-velocity-mad">MAD: 0.00</span>
+                            </div>
+                            <div class="baseline-compact-item">
+                                <span class="baseline-compact-label">Click Freq (per min)</span>
+                                <span class="baseline-compact-value" id="baseline-mouse-clicks">0.00</span>
+                                <span class="baseline-compact-mad" id="baseline-mouse-clicks-mad">MAD: 0.00</span>
+                            </div>
+                            <div class="baseline-compact-item">
+                                <span class="baseline-compact-label">Typing Speed (keys/min)</span>
+                                <span class="baseline-compact-value" id="baseline-keyboard-speed">0.00</span>
+                                <span class="baseline-compact-mad" id="baseline-keyboard-speed-mad">MAD: 0.00</span>
+                            </div>
+                            <div class="baseline-compact-item">
+                                <span class="baseline-compact-label">Typing Error Rate</span>
+                                <span class="baseline-compact-value" id="baseline-keyboard-error">0.00</span>
+                                <span class="baseline-compact-mad" id="baseline-keyboard-error-mad">MAD: 0.00</span>
+                            </div>
+                            <div class="baseline-compact-item">
+                                <span class="baseline-compact-label">Avg Pause Duration (ms)</span>
+                                <span class="baseline-compact-value" id="baseline-keyboard-pause">0.00</span>
+                                <span class="baseline-compact-mad" id="baseline-keyboard-pause-mad">MAD: 0.00</span>
+                            </div>
+                            <div class="baseline-compact-item">
+                                <span class="baseline-compact-label">Scroll Velocity</span>
+                                <span class="baseline-compact-value" id="baseline-scroll-velocity">0.00</span>
+                                <span class="baseline-compact-mad" id="baseline-scroll-velocity-mad">MAD: 0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Content Grid (same as calibration) -->
+                    <div class="calibration-content-grid" style="margin-top: 32px;">
+                        <!-- Left Column: Interactive Content -->
+                        <div class="calibration-content-left">
+                            <!-- Typing Box -->
+                            <div class="calibration-typing-section">
+                                <h4>Write Freely</h4>
+                                <textarea 
+                                    id="dashboard-typing-box" 
+                                    class="calibration-typing-box" 
+                                    placeholder="Type here to test keyboard metrics... Try typing at different speeds, using backspace, and taking pauses."
+                                    rows="6"
+                                ></textarea>
+                            </div>
+                            
+                            <!-- Scrollable Reading Content -->
+                            <div class="calibration-reading-section">
+                                <h4>Read About Stress</h4>
+                                <div class="calibration-scrollarea" id="dashboard-scrollarea">
+                                    <h5>Why Stress Management is Critical in the Modern Workplace</h5>
+                                    <p>In today's fast-paced professional environment, stress has become an omnipresent companion that silently erodes productivity, creativity, and well-being. Understanding and managing stress is not merely a personal wellness concern—it is a strategic imperative for sustained high performance.</p>
+                                    
+                                    <p>Chronic stress triggers a cascade of physiological responses that fundamentally alter how our brains process information. When cortisol and adrenaline flood our systems, the prefrontal cortex—responsible for executive functions like decision-making and problem-solving—becomes less efficient. Meanwhile, the amygdala, our threat-detection center, becomes hyperactive, leading to reactive rather than thoughtful responses. This neurological shift explains why stressed professionals make more errors, struggle with complex tasks, and experience difficulty maintaining focus.</p>
+                                    
+                                    <p>The economic implications are staggering. According to recent studies, stress-related productivity loss costs organizations billions annually. Presenteeism—the phenomenon of employees being physically present but mentally disengaged—is significantly more costly than absenteeism. Stressed workers require more time to complete tasks, make riskier decisions, and are more prone to costly mistakes. In high-stakes professions like finance, healthcare, or technology, these impairments can lead to catastrophic outcomes.</p>
+                                    
+                                    <p>Moreover, stress creates a negative feedback loop that compounds its effects. As stress increases, decision-making quality decreases, leading to more stress-inducing situations. This creates a downward spiral that becomes increasingly difficult to escape. The cognitive load of managing stress responses further drains mental resources, leaving less capacity for the actual work at hand.</p>
+                                    
+                                    <p>Real-time stress monitoring represents a paradigm shift from reactive to proactive stress management. Traditional approaches rely on self-reporting, which is inherently flawed—people often don't recognize their stress levels until they reach critical points. Behavioral monitoring through subtle indicators like typing patterns, mouse movements, and interaction rhythms provides objective, continuous assessment without interrupting workflow.</p>
+                                    
+                                    <p>The integration of micro-interventions—brief, science-backed techniques that can be completed in 10-90 seconds—allows for timely stress mitigation before it escalates. These interventions work by activating the parasympathetic nervous system, shifting the body from fight-or-flight mode to a more balanced state. Techniques like box breathing, progressive muscle relaxation, or brief mindfulness exercises can significantly reduce stress markers within minutes.</p>
+                                    
+                                    <p>Personalization is key. Stress responses are highly individual, and what triggers one person may not affect another. Machine learning algorithms can identify personal stress patterns and optimize intervention timing and type. Over time, the system learns which interventions are most effective for each individual, creating a tailored stress management strategy.</p>
+                                    
+                                    <p>Privacy concerns are paramount. Modern stress monitoring systems must operate entirely locally, with no data transmission to external servers. Behavioral data never leaves the user's device, ensuring complete privacy while providing powerful insights. This privacy-first approach removes barriers to adoption and protects sensitive professional information.</p>
+                                    
+                                    <p>For knowledge workers, whose primary asset is cognitive capacity, protecting mental performance is protecting business value. Stress management becomes not just a wellness initiative but a competitive advantage. Organizations that invest in proactive stress management see measurable improvements in decision quality, innovation, and employee retention.</p>
+                                    
+                                    <p>The future of work requires tools that support human performance at the most fundamental level. Stress-aware systems that detect, intervene, and learn represent the next frontier of workplace technology—one that honors the complexity of human psychology while providing practical, real-world solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column: Real-time Metrics -->
+                        <div class="calibration-content-right">
+                            <!-- Real-time Metrics -->
+                            <div class="calibration-metrics-section">
+                                <h4>Real-time Metrics</h4>
+                                <div class="calibration-metrics-grid">
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Mouse Velocity</span>
+                                        <span class="calibration-metric-value" id="dashboard-mouse-velocity">0.00</span>
+                                        <span class="calibration-metric-unit">px/s</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Click Freq</span>
+                                        <span class="calibration-metric-value" id="dashboard-mouse-clicks">0.00</span>
+                                        <span class="calibration-metric-unit">clicks/min</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Rage Clicks</span>
+                                        <span class="calibration-metric-value" id="dashboard-mouse-rage">No</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Typing Speed</span>
+                                        <span class="calibration-metric-value" id="dashboard-keyboard-speed">0.00</span>
+                                        <span class="calibration-metric-unit">keys/min</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Typing Error Rate</span>
+                                        <span class="calibration-metric-value" id="dashboard-keyboard-error">0.00</span>
+                                        <span class="calibration-metric-unit">errors/10 keys</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Avg Pause</span>
+                                        <span class="calibration-metric-value" id="dashboard-keyboard-pause">0</span>
+                                        <span class="calibration-metric-unit">ms</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Scroll Velocity</span>
+                                        <span class="calibration-metric-value" id="dashboard-scroll-velocity">0.00</span>
+                                        <span class="calibration-metric-unit">px/s</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Key Statistics -->
+                            <div class="calibration-keys-section">
+                                <h4>Key Press Statistics</h4>
+                                <div class="calibration-keys-list" id="dashboard-keys-list">
+                                    <div class="calibration-keys-empty">Start typing to see statistics...</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mouse Zone Map -->
+                            <div class="calibration-zones-section">
+                                <h4>Mouse Exploration Zones</h4>
+                                <div class="calibration-zones-grid" id="dashboard-zones-grid">
+                                    <!-- Zones will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Calibration in Progress -->
+                <div class="dashboard-calibration-progress" id="dashboard-calibration-progress" style="display: none;">
+                    <div class="calibration-progress-header">
+                        <div class="calibration-icon-large">🎯</div>
+                        <div>
+                            <h3>Calibrating...</h3>
+                            <p>Learning your normal work patterns to detect stress accurately. Stress insights will be available after 2-4 hours of active use.</p>
+                        </div>
+                        <div class="calibration-progress-info">
+                            <div class="calibration-progress-bar-container">
+                                <div class="calibration-progress-bar" id="dashboard-progress-bar"></div>
+                            </div>
+                            <div class="calibration-progress-text">
+                                <span id="dashboard-progress-percent">0%</span>
+                                <span id="dashboard-progress-time">0:00 / --:--</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calibration Test Content -->
+                    <div class="calibration-content-grid">
+                        <!-- Left Column: Interactive Content -->
+                        <div class="calibration-content-left">
+                            <!-- Typing Box -->
+                            <div class="calibration-typing-section">
+                                <h4>Write Freely</h4>
+                                <textarea 
+                                    id="calibration-typing-box" 
+                                    class="calibration-typing-box" 
+                                    placeholder="Type here to test keyboard metrics... Try typing at different speeds, using backspace, and taking pauses."
+                                    rows="6"
+                                ></textarea>
+                            </div>
+                            
+                            <!-- Scrollable Reading Content -->
+                            <div class="calibration-reading-section">
+                                <h4>Read About Stress</h4>
+                                <div class="calibration-scrollarea" id="calibration-scrollarea">
+                                    <h5>Why Stress Management is Critical in the Modern Workplace</h5>
+                                    <p>In today's fast-paced professional environment, stress has become an omnipresent companion that silently erodes productivity, creativity, and well-being. Understanding and managing stress is not merely a personal wellness concern—it is a strategic imperative for sustained high performance.</p>
+                                    
+                                    <p>Chronic stress triggers a cascade of physiological responses that fundamentally alter how our brains process information. When cortisol and adrenaline flood our systems, the prefrontal cortex—responsible for executive functions like decision-making and problem-solving—becomes less efficient. Meanwhile, the amygdala, our threat-detection center, becomes hyperactive, leading to reactive rather than thoughtful responses. This neurological shift explains why stressed professionals make more errors, struggle with complex tasks, and experience difficulty maintaining focus.</p>
+                                    
+                                    <p>The economic implications are staggering. According to recent studies, stress-related productivity loss costs organizations billions annually. Presenteeism—the phenomenon of employees being physically present but mentally disengaged—is significantly more costly than absenteeism. Stressed workers require more time to complete tasks, make riskier decisions, and are more prone to costly mistakes. In high-stakes professions like finance, healthcare, or technology, these impairments can lead to catastrophic outcomes.</p>
+                                    
+                                    <p>Moreover, stress creates a negative feedback loop that compounds its effects. As stress increases, decision-making quality decreases, leading to more stress-inducing situations. This creates a downward spiral that becomes increasingly difficult to escape. The cognitive load of managing stress responses further drains mental resources, leaving less capacity for the actual work at hand.</p>
+                                    
+                                    <p>Real-time stress monitoring represents a paradigm shift from reactive to proactive stress management. Traditional approaches rely on self-reporting, which is inherently flawed—people often don't recognize their stress levels until they reach critical points. Behavioral monitoring through subtle indicators like typing patterns, mouse movements, and interaction rhythms provides objective, continuous assessment without interrupting workflow.</p>
+                                    
+                                    <p>The integration of micro-interventions—brief, science-backed techniques that can be completed in 10-90 seconds—allows for timely stress mitigation before it escalates. These interventions work by activating the parasympathetic nervous system, shifting the body from fight-or-flight mode to a more balanced state. Techniques like box breathing, progressive muscle relaxation, or brief mindfulness exercises can significantly reduce stress markers within minutes.</p>
+                                    
+                                    <p>Personalization is key. Stress responses are highly individual, and what triggers one person may not affect another. Machine learning algorithms can identify personal stress patterns and optimize intervention timing and type. Over time, the system learns which interventions are most effective for each individual, creating a tailored stress management strategy.</p>
+                                    
+                                    <p>Privacy concerns are paramount. Modern stress monitoring systems must operate entirely locally, with no data transmission to external servers. Behavioral data never leaves the user's device, ensuring complete privacy while providing powerful insights. This privacy-first approach removes barriers to adoption and protects sensitive professional information.</p>
+                                    
+                                    <p>For knowledge workers, whose primary asset is cognitive capacity, protecting mental performance is protecting business value. Stress management becomes not just a wellness initiative but a competitive advantage. Organizations that invest in proactive stress management see measurable improvements in decision quality, innovation, and employee retention.</p>
+                                    
+                                    <p>The future of work requires tools that support human performance at the most fundamental level. Stress-aware systems that detect, intervene, and learn represent the next frontier of workplace technology—one that honors the complexity of human psychology while providing practical, real-world solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column: Real-time Metrics -->
+                        <div class="calibration-content-right">
+                            <!-- Real-time Metrics -->
+                            <div class="calibration-metrics-section">
+                                <h4>Real-time Metrics</h4>
+                                <div class="calibration-metrics-grid">
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Mouse Velocity</span>
+                                        <span class="calibration-metric-value" id="cal-mouse-velocity">0.00</span>
+                                        <span class="calibration-metric-unit">px/s</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Click Freq</span>
+                                        <span class="calibration-metric-value" id="cal-mouse-clicks">0.00</span>
+                                        <span class="calibration-metric-unit">clicks/min</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Typing Speed</span>
+                                        <span class="calibration-metric-value" id="cal-keyboard-speed">0.00</span>
+                                        <span class="calibration-metric-unit">keys/min</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Typing Error Rate</span>
+                                        <span class="calibration-metric-value" id="cal-keyboard-error">0.00</span>
+                                        <span class="calibration-metric-unit">errors/10 keys</span>
+                                    </div>
+                                    <div class="calibration-metric-item">
+                                        <span class="calibration-metric-label">Scroll Velocity</span>
+                                        <span class="calibration-metric-value" id="cal-scroll-velocity">0.00</span>
+                                        <span class="calibration-metric-unit">px/s</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Key Statistics -->
+                            <div class="calibration-keys-section">
+                                <h4>Key Press Statistics</h4>
+                                <div class="calibration-keys-list" id="calibration-keys-list">
+                                    <div class="calibration-keys-empty">Start typing to see statistics...</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mouse Zone Map -->
+                            <div class="calibration-zones-section">
+                                <h4>Mouse Exploration Zones</h4>
+                                <div class="calibration-zones-grid" id="calibration-zones-grid">
+                                    <!-- Zones will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="interventions-route" class="route">
+            <section class="interventions-intro">
+                <div class="interventions-header">
+                    <div class="section-icon"><i data-lucide="heart-pulse"></i></div>
+                    <h2 class="section-title">Interventions</h2>
+                    <p class="section-description">Science-backed micro-interventions designed to reduce stress in seconds</p>
+                </div>
+
+                <div class="interventions-about">
+                    <div class="about-card">
+                        <h3>What Are Interventions?</h3>
+                        <p>
+                            Interventions are brief, evidence-based techniques that help you recover from stress in real-time. 
+                            Each intervention is designed to activate your parasympathetic nervous system, shifting your body 
+                            from fight-or-flight mode to a more balanced state. These micro-breaks take only 10-90 seconds 
+                            and can significantly reduce stress markers within minutes.
+                        </p>
+                    </div>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i data-lucide="zap"></i></div>
+                            <h4>Rapid Recovery</h4>
+                            <p>Reduce stress levels within 10-90 seconds without leaving your workspace</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i data-lucide="brain"></i></div>
+                            <h4>Science-Backed</h4>
+                            <p>Each technique is based on research in neuroscience and stress physiology</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i data-lucide="target"></i></div>
+                            <h4>Targeted Relief</h4>
+                            <p>Different interventions address specific stress symptoms and scenarios</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
+                            <h4>Improved Performance</h4>
+                            <p>Regular use enhances focus, decision-making, and cognitive capacity</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="test-interventions">
+                <h2 class="section-title-large">Test Interventions</h2>
+                <p class="test-description">Click on any intervention to experience it right now</p>
+
+                <div class="interventions-grid">
+                    <div class="intervention-card" data-intervention="oneBreathReset">
+                        <div class="intervention-card-icon">🌬️</div>
+                        <h3>One-Breath Reset</h3>
+                        <div class="intervention-duration">8-12 seconds</div>
+                        <p class="intervention-description">
+                            A single deep breath cycle to quickly reset your nervous system. Perfect for mild stress 
+                            or quick transitions between tasks.
+                        </p>
+                        <div class="intervention-tags">
+                            <span class="tag">Quick</span>
+                            <span class="tag">Breathing</span>
+                        </div>
+                        <button class="intervention-btn">Try It Now</button>
+                    </div>
+
+                    <div class="intervention-card" data-intervention="boxBreathing">
+                        <div class="intervention-card-icon">📦</div>
+                        <h3>Box Breathing</h3>
+                        <div class="intervention-duration">60 seconds</div>
+                        <p class="intervention-description">
+                            4-4-4-4 breathing pattern (inhale, hold, exhale, hold). Highly effective for moderate 
+                            to high stress levels.
+                        </p>
+                        <div class="intervention-tags">
+                            <span class="tag">Moderate</span>
+                            <span class="tag">Breathing</span>
+                        </div>
+                        <button class="intervention-btn">Try It Now</button>
+                    </div>
+
+                    <div class="intervention-card" data-intervention="twentyTwentyGaze">
+                        <div class="intervention-card-icon">👁️</div>
+                        <h3>20-20-20 Eye Reset</h3>
+                        <div class="intervention-duration">20 seconds</div>
+                        <p class="intervention-description">
+                            Look 20 feet away for 20 seconds to reduce eye strain and visual fatigue. Essential 
+                            for extended screen time.
+                        </p>
+                        <div class="intervention-tags">
+                            <span class="tag">Eye Care</span>
+                            <span class="tag">Visual</span>
+                        </div>
+                        <button class="intervention-btn">Try It Now</button>
+                    </div>
+
+                    <div class="intervention-card" data-intervention="figureEightSmoothPursuit">
+                        <div class="intervention-card-icon">∞</div>
+                        <h3>Figure-8 Smooth Pursuit</h3>
+                        <div class="intervention-duration">30 seconds</div>
+                        <p class="intervention-description">
+                            Follow a figure-8 pattern to exercise eye muscles and engage visual-motor coordination. 
+                            Reduces cognitive tension.
+                        </p>
+                        <div class="intervention-tags">
+                            <span class="tag">Eye Care</span>
+                            <span class="tag">Movement</span>
+                        </div>
+                        <button class="intervention-btn">Try It Now</button>
+                    </div>
+
+                    <div class="intervention-card" data-intervention="nearFarFocusShift">
+                        <div class="intervention-card-icon">🔍</div>
+                        <h3>Near-Far Focus Shift</h3>
+                        <div class="intervention-duration">45 seconds</div>
+                        <p class="intervention-description">
+                            Alternate focus between near and far objects to relax ciliary muscles and reduce 
+                            accommodation strain.
+                        </p>
+                        <div class="intervention-tags">
+                            <span class="tag">Eye Care</span>
+                            <span class="tag">Focus</span>
+                        </div>
+                        <button class="intervention-btn">Try It Now</button>
+                    </div>
+
+                    <div class="intervention-card" data-intervention="microBreak">
+                        <div class="intervention-card-icon">☕</div>
+                        <h3>3-Minute Micro-Break</h3>
+                        <div class="intervention-duration">3 minutes</div>
+                        <p class="intervention-description">
+                            Comprehensive break combining breathing, stretching, and movement. Ideal for deep 
+                            recovery and sustained focus.
+                        </p>
+                        <div class="intervention-tags">
+                            <span class="tag">Extended</span>
+                            <span class="tag">Full Body</span>
+                        </div>
+                        <button class="intervention-btn">Try It Now</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="widget-route" class="route">
+            <div class="widget-install">
+                <div class="widget-logo">
+                    <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#fef3c7" width="100" height="100" rx="15"/>
+                        <text x="50" y="70" font-size="60" text-anchor="middle">🧘</text>
+                    </svg>
+                </div>
+                <h1>COGA Stress Widget</h1>
+                <p class="widget-description">
+                    Monitor your stress levels in real-time, on any website, with a simple, privacy-focused bookmarklet.
+                </p>
+
+                <div class="bookmarklet-container">
+                    <h2 class="bookmarklet-title">Install Your Bookmarklet</h2>
+                    <p class="bookmarklet-description">
+                        Drag the button below to your browser's bookmarks bar. That's it! Click it on any webpage to load the widget.
+                    </p>
+                    
+                    <a href="javascript:(function(){if(window.COGA){alert('✅ COGA is already loaded on this page!');return;}const s=document.createElement('script');s.src='{{PUBLIC_URL}}/coga.min.js';s.onload=()=>console.log('[COGA] Successfully loaded');s.onerror=()=>alert('❌ Error loading COGA. Check if server is running.');document.head.appendChild(s);})();" 
+                       class="bookmarklet-link"
+                       onclick="alert('💡 Tip: Drag this button to your bookmarks bar instead of clicking it here!'); return false;">
+                        🧘 Load COGA
+                    </a>
+                    
+                    <div class="status-container">
+                        <span class="status" id="status">Server Status: <strong>Online</strong></span>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-card-icon">🌐</div>
+                        <h3 class="info-card-title">Works Everywhere</h3>
+                        <p class="info-card-description">Use the COGA widget on any website, from social media to your email inbox.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">🔒</div>
+                        <h3 class="info-card-title">Privacy First</h3>
+                        <p class="info-card-description">Your data never leaves your computer. All processing happens locally in your browser.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">⚡</div>
+                        <h3 class="info-card-title">Real-time Analysis</h3>
+                        <p class="info-card-description">Get instant feedback on your stress levels without delay or server processing.</p>
+                    </div>
+                </div>
+
+                <section class="extension-section">
+                    <h2 class="extension-title">Upgrade to the Full COGA Extension</h2>
+                    <p class="extension-lead">
+                        The bookmarklet is perfect for quick demos, but the Chrome extension unlocks continuous monitoring,
+                        synchronized analytics, and enterprise-grade controls that are not possible with a page-only script.
+                    </p>
+
+                    <div class="extension-benefits-grid">
+                        <div class="extension-card">
+                            <h3>Zero-Click Coverage</h3>
+                            <p>Loads automatically on every tab and keeps running in the background without manual activation.</p>
+                        </div>
+                        <div class="extension-card">
+                            <h3>Global Baseline Sync</h3>
+                            <p>Shares calibration, stress scores, and interventions across all tabs, windows, and browsing sessions.</p>
+                        </div>
+                        <div class="extension-card">
+                            <h3>Centralized Storage</h3>
+                            <p>Persists encrypted metrics with Chrome storage APIs so insights survive reloads and device restarts.</p>
+                        </div>
+                        <div class="extension-card">
+                            <h3>Smart Interventions</h3>
+                            <p>Delivers interventions once per threshold using annoyance rules, cooldowns, and team policies.</p>
+                        </div>
+                        <div class="extension-card">
+                            <h3>Enterprise Controls</h3>
+                            <p>Configure suppressed domains, sensitivity, and approved interventions centrally for every teammate.</p>
+                        </div>
+                        <div class="extension-card">
+                            <h3>Automatic Updates</h3>
+                            <p>Receives new detection models and UI upgrades without requiring users to refresh bookmarklets.</p>
+                        </div>
+                    </div>
+
+                    <div class="extension-compare">
+                        <div class="extension-list">
+                            <h4>Extension Capabilities</h4>
+                            <ul>
+                                <li>Runs on browser startup with no manual action.</li>
+                                <li>Merges stress analytics from every active tab.</li>
+                                <li>Streams metrics to the dashboard in real time.</li>
+                                <li>Works offline after the initial unlock.</li>
+                                <li>Ships with admin policies and audit-friendly logs.</li>
+                            </ul>
+                        </div>
+                        <div class="extension-list bookmarklet-summary">
+                            <h4>Bookmarklet Limitations</h4>
+                            <ul>
+                                <li>Must be clicked on each page load.</li>
+                                <li>Metrics stay isolated to the current domain.</li>
+                                <li>No background processing or auto interventions.</li>
+                                <li>Cleared when the browser storage is wiped.</li>
+                                <li>Manual updates required to pick up new releases.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="extension-cta">
+                        <p>
+                            Ready to experience the full workflow assistant? Load the unpacked extension from the
+                            <code>extension/</code> directory in Chrome Developer Mode, unlock it once, and let COGA guard every tab automatically.
+                        </p>
+                        <p class="extension-note">
+                            Need deployment help? Reach out to COGA Labs to access managed distribution, API integrations, and enterprise onboarding.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div id="settings-route" class="route">
+            <section class="settings">
+                <h2 class="section-title">Settings</h2>
+                <p class="section-description">Configure your COGA experience</p>
+                
+                <!-- Section 1: Stress Detection Sensitivity -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Stress Detection Sensitivity</h3>
+                    <p class="settings-section-description">Control the level of detection. Higher sensitivity triggers interventions more frequently.</p>
+                    <div class="sensitivity-buttons">
+                        <button class="sensitivity-btn" data-sensitivity="low" id="sensitivity-low">
+                            <span class="sensitivity-label">Low</span>
+                            <span class="sensitivity-desc">20/70 threshold</span>
+                        </button>
+                        <button class="sensitivity-btn active" data-sensitivity="medium" id="sensitivity-medium">
+                            <span class="sensitivity-label">Medium</span>
+                            <span class="sensitivity-desc">40/70 threshold</span>
+                        </button>
+                        <button class="sensitivity-btn" data-sensitivity="high" id="sensitivity-high">
+                            <span class="sensitivity-label">High</span>
+                            <span class="sensitivity-desc">70/70 threshold</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Intervention Limits -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Intervention Limits</h3>
+                    <p class="settings-section-description">Control how many times interventions can appear.</p>
+                    <div class="intervention-limits-grid">
+                        <div class="limit-field">
+                            <label for="cooldown-minutes">Cooldown (minutes)</label>
+                            <input type="number" id="cooldown-minutes" min="1" max="60" value="8" class="limit-input">
+                        </div>
+                        <div class="limit-field">
+                            <label for="max-per-hour">Max per hour</label>
+                            <input type="number" id="max-per-hour" min="1" max="10" value="2" class="limit-input">
+                        </div>
+                        <div class="limit-field">
+                            <label for="max-per-day">Max per day</label>
+                            <input type="number" id="max-per-day" min="1" max="50" value="6" class="limit-input">
+                        </div>
+                    </div>
+                    <button class="settings-save-btn" id="save-limits-btn">Save Limits</button>
+                </div>
+
+                <!-- Section 3: Suppressed Domains -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Suppressed Domains</h3>
+                    <p class="settings-section-description">Add domains where COGA should not capture events or show interventions (e.g., gmail.com, github.com).</p>
+                    <div class="domain-input-group">
+                        <input type="text" id="domain-input" placeholder="Enter domain (e.g., gmail.com)" class="domain-input">
+                        <button class="settings-add-btn" id="add-domain-btn">Add Domain</button>
+                    </div>
+                    <div class="domains-list" id="domains-list">
+                        <p class="domains-empty">No suppressed domains yet</p>
+                    </div>
+                </div>
+
+                <!-- Section 4: Enabled Interventions -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Enabled Interventions</h3>
+                    <p class="settings-section-description">Select which interventions should be shown when stress is detected.</p>
+                    <div class="interventions-checklist">
+                        <label class="intervention-checkbox">
+                            <input type="checkbox" id="intervention-oneBreathReset" checked>
+                            <span class="checkbox-label">
+                                <strong>One-Breath Reset</strong>
+                                <span class="checkbox-desc">8–12 second inhale/exhale cycle for mild stress</span>
+                            </span>
+                        </label>
+                        <label class="intervention-checkbox">
+                            <input type="checkbox" id="intervention-boxBreathing" checked>
+                            <span class="checkbox-label">
+                                <strong>Box Breathing (4-4-4-4)</strong>
+                                <span class="checkbox-desc">Full 60-second guided breathing for moderate/high stress</span>
+                            </span>
+                        </label>
+                        <label class="intervention-checkbox">
+                            <input type="checkbox" id="intervention-twentyTwentyGaze" checked>
+                            <span class="checkbox-label">
+                                <strong>20-20-20 Eye Reset</strong>
+                                <span class="checkbox-desc">Look 20 feet away for 20 seconds to reduce eye strain</span>
+                            </span>
+                        </label>
+                        <label class="intervention-checkbox">
+                            <input type="checkbox" id="intervention-figureEightSmoothPursuit" checked>
+                            <span class="checkbox-label">
+                                <strong>Figure-8 Smooth Pursuit</strong>
+                                <span class="checkbox-desc">30-second figure-8 eye tracking overlay</span>
+                            </span>
+                        </label>
+                        <label class="intervention-checkbox">
+                            <input type="checkbox" id="intervention-nearFarFocusShift" checked>
+                            <span class="checkbox-label">
+                                <strong>Near-Far Focus Shift</strong>
+                                <span class="checkbox-desc">Guided near/far focus alternation for ciliary relaxation</span>
+                            </span>
+                        </label>
+                        <label class="intervention-checkbox">
+                            <input type="checkbox" id="intervention-microBreak" checked>
+                            <span class="checkbox-label">
+                                <strong>3-Minute Micro-Break</strong>
+                                <span class="checkbox-desc">Breathing, stretch, and movement cycle with optional chime</span>
+                            </span>
+                        </label>
+                    </div>
+                    <button class="settings-save-btn" id="save-interventions-btn">Save Interventions</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>COGA v0.1.0 - Phase 1</p>
+        <p class="footer-link">coga Labs</p>
+    </footer>
+
+    <script src="/scripts/router.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/dashboard.js"></script>
+    <script src="/scripts/interventions.js"></script>
+    <script src="/scripts/settings.js"></script>
+</body>
+</html>

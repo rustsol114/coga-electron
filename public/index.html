@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COGA MVP - Development Test Page</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧘 COGA MVP</h1>
+            <p>Real-Time Stress Detection & Intervention System</p>
+            <span class="status-indicator">Phase 1 - Active</span>
+        </div>
+
+        <div class="card">
+            <h2>Welcome to COGA Development</h2>
+            <p>
+                COGA is now running on this page. The floating widget in the corner will monitor your
+                behavioral patterns and provide helpful interventions when stress is detected.
+            </p>
+            <p>
+                <strong>What's happening:</strong>
+            </p>
+            <ul>
+                <li>📊 A 3-minute baseline calibration will run first (if this is your first time)</li>
+                <li>🖱️ Your mouse movements, clicks, and typing patterns are being analyzed</li>
+                <li>💚 The floating widget shows your current stress level with a color-coded indicator</li>
+                <li>🧘 When elevated stress is detected, you'll receive gentle intervention prompts</li>
+            </ul>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature">
+                <h3>🫁 Box Breathing</h3>
+                <p>Guided 4-4-4-4 breathing pattern to quickly reduce stress and restore calm.</p>
+            </div>
+            <div class="feature">
+                <h3>👁️ Eye Rest</h3>
+                <p>20-20-20 rule reminder to prevent eye strain from prolonged screen time.</p>
+            </div>
+            <div class="feature">
+                <h3>☕ Micro-Break</h3>
+                <p>Quick 30-second prompts to stand, stretch, and reset your focus.</p>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h4>🎯 How to Test COGA</h4>
+            <p>
+                To trigger stress detection, try typing quickly in the text area below, making rapid
+                mouse movements, or clicking repeatedly in one spot. COGA will detect these patterns
+                and may offer an intervention if stress levels rise above the threshold.
+            </p>
+        </div>
+
+        <div class="test-area">
+            <h3>Interactive Test Area</h3>
+            <p style="margin-bottom: 16px; color: #6b7280;">
+                Use this area to generate activity that COGA can monitor. Try typing, deleting,
+                pausing, and varying your speed to simulate different stress patterns.
+            </p>
+            <textarea placeholder="Start typing here to test COGA's detection capabilities...
+
+Try:
+- Typing very fast
+- Using backspace frequently
+- Taking long pauses between words
+- Making many quick edits
+
+COGA will analyze these patterns in real-time!"></textarea>
+        </div>
+
+        <div class="card">
+            <h2>📱 Bookmarklet Installation</h2>
+            <p>
+                Once deployed, users can install COGA by dragging this bookmarklet to their bookmarks bar:
+            </p>
+            <div class="bookmarklet">
+                <code>javascript:(function(){const script=document.createElement('script');script.src='https://cdn.coga.io/v0/coga.min.js';document.head.appendChild(script);})();</code>
+            </div>
+            <p>
+                <strong>For now:</strong> COGA is running automatically on this development page.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🛠️ Developer Console</h2>
+            <p>
+                Open your browser's developer console to access COGA programmatically:
+            </p>
+            <ul>
+                <li><code>window.COGA.getStatus()</code> - View current status</li>
+                <li><code>window.COGA.getStatistics()</code> - Get usage statistics</li>
+                <li><code>window.COGA.setSensitivity('low'|'medium'|'high')</code> - Adjust sensitivity</li>
+                <li><code>window.COGA.setEnabled(false)</code> - Disable interventions</li>
+                <li><code>window.COGA.reset()</code> - Reset all data</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📋 Phase 1 Features</h2>
+            <ul>
+                <li>✅ Behavioral metrics tracking (mouse, keyboard, scroll)</li>
+                <li>✅ 3-minute baseline calibration</li>
+                <li>✅ Real-time stress scoring with Z-score calculation</li>
+                <li>✅ 3 core interventions (breathing, eye rest, micro-break)</li>
+                <li>✅ Annoyance prevention rules (8-min cooldown, max 3/hour)</li>
+                <li>✅ Minimal floating widget UI</li>
+                <li>✅ Anonymous event logging</li>
+                <li>✅ Local data storage</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

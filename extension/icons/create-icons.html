@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COGA Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="128" height="128"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Draw simple icon: green circle with breathing symbol
+        function drawIcon(size) {
+            canvas.width = size;
+            canvas.height = size;
+            
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background circle
+            ctx.fillStyle = '#68B36B';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Breathing symbol (circle inside)
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Inner dot
+            ctx.fillStyle = '#68B36B';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/6, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Generate and download icons
+        const sizes = [16, 48, 128];
+        sizes.forEach(size => {
+            drawIcon(size);
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+        
+        console.log('Icons generated! Check your downloads folder.');
+    </script>
+</body>
+</html>
+

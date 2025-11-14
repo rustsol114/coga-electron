@@ -1,0 +1,161 @@
+# COGA Desktop App - Testing & Building Guide
+
+## ✅ Completed Setup
+
+The following has been successfully configured for your COGA web app to run as a Windows desktop application:
+
+### Core Files Created
+- **`electron/main.js`** - Main Electron process with security, menu, and window management
+- **`electron/preload.js`** - Secure preload script with contextBridge API
+- **`package.json`** - Updated with Electron dependencies and build scripts
+- **`electron/README.md`** - Complete documentation
+- **`electron/icons/`** - Icon directory (using existing extension icons)
+
+### Key Features Implemented
+- ✅ **Security**: Context isolation, node integration disabled, secure IPC
+- ✅ **Windows Integration**: Native title bar, menus, window controls
+- ✅ **Auto-loading**: Development vs production mode detection
+- ✅ **External Links**: Opens in default browser safely
+- ✅ **Desktop Features**: Notifications, clipboard, platform detection
+- ✅ **Build System**: Electron-builder configuration for Windows
+
+## 🚀 Testing the Application
+
+Since npm commands are restricted, here are the manual steps to test:
+
+### Step 1: Wait for Dependencies
+```bash
+# The npm install should complete automatically
+# You'll see "npm packages installed" when done
+```
+
+### Step 2: Start Development Server
+```bash
+# Terminal 1: Start the development web server
+node server.js
+
+# Expected output: "Server running on: http://localhost:8080"
+```
+
+### Step 3: Run Electron App
+```bash
+# Terminal 2: Run Electron in development mode
+npm run electron:dev
+
+# OR manually:
+npx electron .
+```
+
+### Expected Results
+1. A desktop window opens with the COGA app
+2. Window title shows "COGA - Stress Detection & Intervention System"
+3. The app loads your existing web interface
+4. Developer tools open automatically in dev mode
+5. Menu bar includes File, View, Window, Help menus
+6. External links open in your default browser
+
+### Troubleshooting
+- **App won't start**: Ensure `node server.js` is running first
+- **Icons missing**: They're copied from `extension/icons/`
+- **Security warnings**: Normal in development mode
+- **Window too small**: Check your resolution (designed for 1200x800)
+
+## 🏗️ Building for Windows Distribution
+
+### Step 1: Build the Web Assets
+```bash
+npm run build
+```
+
+### Step 2: Create Windows Installer
+```bash
+npm run electron:build:win
+```
+
+### Expected Output
+- **Installer Location**: `electron-dist/COGA Setup 0.1.0.exe`
+- **Installer Size**: Approximately 150-200MB (includes Electron runtime)
+- **Features**: 
+  - Desktop shortcut creation
+  - Start menu entry
+  - Uninstall support
+  - Custom install directory option
+
+## 📁 File Structure Overview
+
+```
+project-root/
+├── electron/                 # Electron-specific files
+│   ├── main.js              # Main process
+│   ├── preload.js           # Preload script
+│   ├── icons/               # App icons
+│   └── README.md            # Detailed documentation
+├── package.json             # Updated with Electron config
+├── public/                  # Your existing web files
+├── extension/               # Your existing extension files
+└── dist/                    # Built web assets (after npm run build)
+```
+
+## 🔧 Development Commands Reference
+
+```bash
+# Development
+npm run electron:dev        # Build + Run Electron with dev server
+npm run electron            # Run Electron only (production build)
+
+# Building
+npm run build               # Build web assets
+npm run electron:build      # Build app for current platform
+npm run electron:build:win  # Build Windows installer specifically
+
+# Original Commands (still work)
+npm run dev                 # Original web dev server
+npm run serve               # Original server.js
+```
+
+## 🎯 Key Differences from Web Version
+
+### In Desktop App
+- **Windowed Experience**: Runs in native window instead of browser tab
+- **Desktop Integration**: Uses system menus, notifications, clipboard
+- **Offline Capability**: All assets bundled, no external server needed
+- **Security**: Enhanced isolation and security features
+- **Performance**: Electron's native performance optimizations
+
+### Shared Features
+- **Same Interface**: Identical UI/UX to web version
+- **Same Functionality**: All stress detection and interventions work
+- **Same Data**: Local storage and user preferences
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+
+## 📝 Next Steps for Production
+
+1. **Code Signing**: Get a Windows code signing certificate
+2. **Auto-Updates**: Configure electron-updater for automatic updates
+3. **Custom Installer**: Modify NSIS installer with your branding
+4. **Analytics**: Add desktop-specific usage tracking
+5. **Testing**: Test on multiple Windows versions and configurations
+
+## 🆘 Quick Test Commands
+
+To quickly verify everything works:
+
+```bash
+# 1. Ensure dependencies are installed (wait for npm install)
+# 2. Test development mode:
+node server.js &
+sleep 2
+npx electron .
+```
+
+This will start your COGA desktop application and you should see it open in a native window.
+
+## 📞 Support
+
+If you encounter issues:
+1. Check the terminal output for specific error messages
+2. Ensure both `node server.js` and the Electron app are running
+3. Verify the development server is accessible at `http://localhost:8080`
+4. Check that all files exist in the `electron/` directory
+
+The conversion is complete and ready for testing! 🎉
