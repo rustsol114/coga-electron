@@ -131,8 +131,13 @@ function encodePowerShellScript(script) {
 
 class SystemEventCapture {
   constructor() {
+    
+    this.iohook = require('iohook');
     this.isActive = false;
+    this.iohookListenersRegistered = false;
     this.lastMousePosition = null;
+    this.lastScrollTime = null;
+    this.lastRotation = 0;
     this.mousePollInterval = null;
     this.globalKeyListener = null;
     this.mouseHookProcess = null;
@@ -156,6 +161,66 @@ class SystemEventCapture {
       console.log('[SystemEvents] Already active');
       return;
     }
+
+    // Register iohook listeners (only once)
+    if (!this.iohookListenersRegistered) {
+      this.iohook.on("mousedown", (event) => {
+        // Determine button: 0 = left, 1 = middle, 2 = right
+        let button = 0; // default to left
+        if (event.button === 1 || event.button === 'middle') {
+          button = 1;
+        } else if (event.button === 2 || event.button === 'right') {
+          button = 2;
+        }
+        
+        const clickData = {
+          x: event.x,
+          y: event.y,
+          button: button,
+          timestamp: Date.now()
+        };
+        this.emit("click", clickData);
+        console.log('Mouse down event:', clickData);
+      });
+
+      this.iohook.on("mousewheel", (event) => {
+        const now = Date.now();
+        // iohook rotation: positive = scroll up, negative = scroll down
+        const deltaRotation = event.rotation || 0;
+        const deltaY = deltaRotation * 120; // Convert to standard wheel delta
+        const direction = deltaY > 0 ? 'up' : 'down';
+        
+        // Calculate velocity if we have previous scroll time
+        let velocity = 0;
+        if (this.lastScrollTime !== null) {
+          const timeDiff = now - this.lastScrollTime;
+          if (timeDiff > 0) {
+            velocity = Math.abs(deltaY / (timeDiff / 1000));
+          }
+        }
+        
+        const scrollData = {
+          x: event.x || 0,
+          y: event.y || 0,
+          direction: direction,
+          delta: deltaY,
+          deltaY: deltaY,
+          deltaX: 0,
+          velocity: velocity,
+          timestamp: now
+        };
+        
+        console.log("scroll event:", scrollData);
+        this.emit("scroll", scrollData);
+        
+        this.lastRotation = deltaRotation;
+        this.lastScrollTime = now;
+      });
+      
+      this.iohookListenersRegistered = true;
+    }
+    
+    this.iohook.start();
 
     this.isActive = true;
     console.log('[SystemEvents] Starting system-level monitoring (PowerShell + node-global-key-listener)');
@@ -338,7 +403,7 @@ class SystemEventCapture {
     });
 
     child.stderr.on('data', (chunk) => {
-      console.error('[SystemEvents][PowerShell] stderr:', chunk.toString());
+      // console.error('[SystemEvents][PowerShell] stderr:', chunk.toString());
     });
 
     child.on('exit', (code, signal) => {
@@ -412,28 +477,53 @@ class SystemEventCapture {
     }
 
     if (event.type === 'click') {
+      // Convert button string to number: 'left' = 0, 'middle' = 1, 'right' = 2
+      let button = 0;
+      if (event.button === 'middle') {
+        button = 1;
+      } else if (event.button === 'right') {
+        button = 2;
+      }
+      
       const payload = {
         x: event.x,
         y: event.y,
-        button: event.button || 'left',
+        button: button,
         timestamp: event.timestamp || Date.now(),
       };
       this.trace('click', payload, { source: 'powershell' });
       this.emit('click', payload);
     } else if (event.type === 'scroll') {
       const delta = event.delta || 0;
+      const deltaY = delta; // PowerShell delta is already in the correct format
+      const direction = event.direction || (delta > 0 ? 'up' : 'down');
+      
+      // Calculate velocity if we have previous scroll time
+      let velocity = Math.abs(delta);
+      const now = event.timestamp || Date.now();
+      if (this.lastScrollTime !== null) {
+        const timeDiff = now - this.lastScrollTime;
+        if (timeDiff > 0) {
+          velocity = Math.abs(deltaY / (timeDiff / 1000));
+        }
+      }
+      
       const payload = {
         x: event.x,
         y: event.y,
-        direction: event.direction || (delta > 0 ? 'up' : 'down'),
-        deltaY: delta,
-        velocity: Math.abs(delta),
-        timestamp: event.timestamp || Date.now(),
+        direction: direction,
+        delta: deltaY,
+        deltaY: deltaY,
+        deltaX: 0,
+        velocity: velocity,
+        timestamp: now,
       };
       this.trace('scroll', payload, { source: 'powershell' });
       this.emit('scroll', payload);
     }
   }
+
+  
 
   emit(eventType, data) {
     if (this.eventCallbacks[eventType]) {

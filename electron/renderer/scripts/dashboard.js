@@ -609,6 +609,8 @@
       }
 
       const currentMetrics = window.COGA.getCurrentMetrics();
+      console.log("Current Metrics ===> ", currentMetrics);
+      
       if (!currentMetrics) {
         return;
       }

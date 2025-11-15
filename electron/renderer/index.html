@@ -842,6 +842,8 @@
 
     <!-- Load COGA first (required for dashboard functionality) -->
     <script src="./renderer.js"></script>
+    <!-- Bridge system-wide events to COGA -->
+    <script src="./scripts/systemEventsBridge.js"></script>
     <script>
       // Wait for COGA to initialize (it auto-initializes from renderer.js)
       (function() {

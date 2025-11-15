@@ -96,9 +96,9 @@ ipcMain.handle('systemEvents:start', () => {
       });
 
       systemEvents.on('click', (data) => {
-        console.log('[Main] Received click event from systemEvents:', data);
+        console.log('[Main] System click event received:', data);
         if (mainWindow && !mainWindow.isDestroyed()) {
-          console.log('[Main] Sending click event to renderer...');
+          console.log('[Main] Forwarding click event to renderer via IPC...');
           mainWindow.webContents.send('systemEvent:click', data);
         } else {
           console.warn('[Main] Cannot send click event - mainWindow not available');
@@ -106,9 +106,9 @@ ipcMain.handle('systemEvents:start', () => {
       });
 
       systemEvents.on('scroll', (data) => {
-        console.log('[Main] Received scroll event from systemEvents:', data);
+        console.log('[Main] System scroll event received:', data);
         if (mainWindow && !mainWindow.isDestroyed()) {
-          console.log('[Main] Sending scroll event to renderer...');
+          console.log('[Main] Forwarding scroll event to renderer via IPC...');
           mainWindow.webContents.send('systemEvent:scroll', data);
         } else {
           console.warn('[Main] Cannot send scroll event - mainWindow not available');
